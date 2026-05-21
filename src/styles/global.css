@@ -268,7 +268,6 @@ main {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  filter: grayscale(1);
   border-radius: 8px;
   box-shadow: var(--shadow);
 }
@@ -467,13 +466,18 @@ main {
 }
 
 .contact-section {
+  max-width: 860px;
   padding-bottom: 120px;
+  text-align: center;
 }
 
 .contact-panel {
   display: grid;
   gap: 16px;
+  width: min(100%, 760px);
   max-width: 760px;
+  margin: 44px auto 0;
+  text-align: left;
 }
 
 .contact-panel p {

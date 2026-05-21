@@ -1,5 +1,6 @@
 import type { Project } from '../data/projects';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import ImageSlider from './ImageSlider';
 
 type ProjectsProps = {
   projects: Project[];
@@ -21,24 +22,34 @@ function Projects({ projects }: ProjectsProps) {
       <div className="project-grid">
         {projects.map((project) => (
           <article className="project-card" key={project.title}>
-            <div className="project-card-header">
-              <h3>{project.title}</h3>
+            {project.images && (
+              <ImageSlider
+                className="project-image-slider"
+                images={project.images}
+                interval={3200}
+                label={project.title}
+              />
+            )}
+            <div className="project-card-body">
+              <div className="project-card-header">
+                <h3>{project.title}</h3>
+              </div>
+              <p>{project.description}</p>
+              <div className="tag-list">
+                {project.technologies.map((technology) => (
+                  <span key={technology}>{technology}</span>
+                ))}
+              </div>
+              <ul>
+                {project.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
               {project.link && (
-                <a href={project.link} target="_blank" rel="noreferrer">
-                  View
+                <a className="project-link" href={project.link} target="_blank" rel="noreferrer">
+                  View project
                 </a>
               )}
-            </div>
-            <p>{project.description}</p>
-            <ul>
-              {project.points.map((point) => (
-                <li key={point}>{point}</li>
-              ))}
-            </ul>
-            <div className="tag-list">
-              {project.tags.map((tag) => (
-                <span key={tag}>{tag}</span>
-              ))}
             </div>
           </article>
         ))}

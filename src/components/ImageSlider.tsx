@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react';
 type ImageSliderProps = {
   images: string[];
   label: string;
+  className?: string;
   interval?: number;
 };
 
-function ImageSlider({ images, label, interval = 2400 }: ImageSliderProps) {
+function ImageSlider({ images, label, className = '', interval = 2400 }: ImageSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -22,7 +23,7 @@ function ImageSlider({ images, label, interval = 2400 }: ImageSliderProps) {
   }, [images.length, interval]);
 
   return (
-    <div className="image-slider" aria-label={`${label}の画像スライダー`}>
+    <div className={`image-slider ${className}`.trim()} aria-label={`${label}の画像スライダー`}>
       {images.map((image, index) => (
         <img
           alt={`${label}のイメージ${index + 1}`}
@@ -31,11 +32,13 @@ function ImageSlider({ images, label, interval = 2400 }: ImageSliderProps) {
           src={image}
         />
       ))}
-      <div className="slider-dots" aria-hidden="true">
-        {images.map((image, index) => (
-          <span className={currentIndex === index ? 'is-active' : ''} key={`${image}-dot`} />
-        ))}
-      </div>
+      {images.length > 1 && (
+        <div className="slider-dots" aria-hidden="true">
+          {images.map((image, index) => (
+            <span className={currentIndex === index ? 'is-active' : ''} key={`${image}-dot`} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -356,6 +356,19 @@ main {
   transform: scale(1);
 }
 
+.project-image-slider {
+  height: 320px;
+  margin: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.project-image-slider img {
+  padding: clamp(18px, 3vw, 32px);
+  object-fit: contain;
+  filter: none;
+  background: var(--surface-soft);
+}
+
 .slider-dots {
   position: absolute;
   left: 18px;
@@ -377,7 +390,7 @@ main {
 }
 
 .card-body,
-.project-card {
+.project-card-body {
   padding: 24px;
 }
 
@@ -399,7 +412,8 @@ main {
   align-items: start;
 }
 
-.project-card-header a {
+.project-link {
+  display: inline-block;
   flex: 0 0 auto;
   padding-bottom: 2px;
   color: var(--text);
@@ -556,8 +570,12 @@ main {
     height: 220px;
   }
 
+  .project-image-slider {
+    height: 280px;
+  }
+
   .card-body,
-  .project-card,
+  .project-card-body,
   .skill-group {
     padding: 20px;
   }

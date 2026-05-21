@@ -15,8 +15,7 @@ function Skills({ skills }: SkillsProps) {
         return groups;
       },
       {
-        Frontend: [],
-        App: [],
+        'Frontend / Mobile': [],
         Backend: [],
         'Design / Tool': [],
       },
